@@ -12,10 +12,7 @@ function App() {
   const fetchData = async () => {
     const response = await axios.get("https://site--mydeliveroo--hw4gvwsxlwd5.code.run/"); // http://localhost:3000/ "https://site--mydeliveroo--hw4gvwsxlwd5.code.run/
     //console.log(response.data);
-    console.log({
-      restaurant,
-      categories,
-    });
+
     setData(response.data);
     setIsLoading(false);
 
@@ -36,7 +33,7 @@ function App() {
 
     <Header />
     <main>
-      <div>afficher data : {data}</div>
+      <div>afficher data : </div>
 
     </main>
 
