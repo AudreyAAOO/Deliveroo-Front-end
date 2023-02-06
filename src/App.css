@@ -1,6 +1,16 @@
-
-
 header {
-  height: 100px;
-  border-bottom: 1px solid rgb(154, 154, 154);
+	height: 100px;
+	border-bottom: 1px solid rgb(154, 154, 154);
+}
+
+.containerMap {
+	border: 1px solid blue;
+	background-color: antiquewhite;
+}
+
+.containerMeal > h3,
+.containerMeal > p {
+	border: 1px solid rgb(0, 0, 0);
+	background-color: white;
+	width: 100%;
 }
