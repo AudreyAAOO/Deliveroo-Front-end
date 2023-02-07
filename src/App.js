@@ -43,7 +43,7 @@ function App() {
     setCounters(copy);
     console.log("copy: ", copy);
     setPanier(!panier);
-    console.log("panier T/F ?", panier);
+    //console.log("panier T/F ?", panier);
   }
 
 
