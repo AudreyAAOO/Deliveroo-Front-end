@@ -58,54 +58,91 @@ main {
 	width: 70%;
 }
 /****** PANIER ***************/
- .right-part {
-	/* background-color: green;
-	width: 30%; */
-	border: 1px solid blue;
-	border-radius: 10px;
-	width: 325px;
-	height: 400px;
-	margin-top: 20px;
+.right-part {
 	background-color: rgb(255, 255, 255);
-} 
+	background-color: rgb(178, 243, 178);
+	width: 30%;
+	border: 1px solid rgb(149, 149, 149);
+	border-radius: 10px;
+	/* width: 320px; */
+	height: fit-content;
+	margin-top: 20px;
 
-/* .container-panier {
-	border: 1px solid blue;
-	width: 325px;
-	height: 400px;
-	background-color: red;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.validPanier {
+	background-color: #00cdbd;
+	height: 60px;
+	width: 80%;
+}
+
+.itemPanier {
+	background-color: rgb(205, 168, 2);
+	padding-bottom: 15px;
+	font-size: 16px;
+	width: 100%;
+}
+
+.lineItem {
+	/*background-color: rgb(234, 243, 178);*/
+	height: fit-content;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	column-gap: 5px;
+}
+/* 
+.itemPanier:nth-last-child(n) {
+	background-color: rgb(63, 188, 1);
+	display: flex;
+	justify-content: flex-end;
+	text-align: right;
 } */
 
-.addMealinPanier {
-	background-color: rgb(249, 56, 178);
+.prix {
+	display: flex;
+}
+
+.sousTotal {
+	border-top: 1px solid rgb(149, 149, 149);
+}
+.total {
+	border-top: 1px solid rgb(149, 149, 149);
+	font-weight: 700;
 }
 
 #encadreMeal {
-	border: 2px solid rgb(255, 0, 0);
+	/* border: 2px solid rgb(255, 0, 0); */
 	cursor: pointer;
 }
 
 /**********************/
 
-
 .category-container {
-	/* background-color: blue; */
+	/*background-color: blue; */
 	margin: 30px 0;
 }
 
 .meals-container {
+	/* background-color: blue; */
+
 	display: flex;
 	flex-wrap: wrap;
 	/* column-gap: 10%; */
-	justify-content: space-between;
+	justify-content: space-evenly;
 }
 
 article {
+	border: 0.5px solid rgb(236, 236, 236);
 	height: 160px;
 	/* width: 380px; */
 	width: 45%;
 	background-color: white;
-	padding: 15px;
+	padding: 14px;
 	display: flex;
 	justify-content: space-between;
 	border-radius: 5px;
@@ -136,15 +173,13 @@ article img {
 	display: flex;
 }
 
-
-
 /* :–☆–:*:–☆–:*:–☆–:*:–☆–:*:–☆–:*:–☆–: */
 /*! -- MEDIA QUERIES --★゜・。。・゜゜・。。・゜☆゜・。。・゜゜・。。・゜★゜・。。・゜゜・。。・゜☆ */
 /* -▼･ェ･▼･ェ･▼･ェ･▼･ェ･▼･ェ･▼･ェ･▼･ェ･▼- */
 
 @media (max-width: 1150px) {
 	.container {
-		max-width: 95vw;
+		max-width: 97vw;
 		/*background-color: red;*/
 		margin: 0 auto;
 	}

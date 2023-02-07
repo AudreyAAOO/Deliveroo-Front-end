@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import Header from "./Components/Header";
-import Category from "./Components/Category";
+//import Category from "./Components/Category";
 // import CounterPanier from "./Components/CounterPanier";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
   // eslint-disable-next-line
   const [data, setData] = useState({});
   const [counters, setCounters] = useState([0]);
-  const [panier, setPanier] = useState(false);
+  const [panier, setPanier] = useState([]);
 
   // State qui me sert à savoir si la data a été récupérée
   const [isLoading, setIsLoading] = useState(true);
@@ -36,15 +36,21 @@ function App() {
   }, []);   //!! ne pas oublier [] si on ne veut pas refaire la requête
 
   //! COMPORTEMENTS
-  const handleAdd = ({elemMeal}) => {
-    console.log("clic");
-    const copy = [...counters];
-    copy.push(elemMeal)
-    setCounters(copy);
-    console.log("copy: ", copy);
-    setPanier(!panier);
-    //console.log("panier T/F ?", panier);
-  }
+  // const handleAdd = (event) => {
+  //   console.log("clic:", {elemMeal});
+  //   const copy = [...counters];
+  //   copy.push({
+  //       id: index,
+  //       nom: meal-title,
+  //       prix: elemMeal.price,
+  //   });
+  //   setCounters(copy);
+  //   console.log("copy: ", copy);
+  //   setPanier(!panier);
+  //   //console.log("panier T/F ?", panier);
+  // }
+
+
 
 
   //! RENDER
@@ -59,6 +65,7 @@ function App() {
           <h1>{data.restaurant.name}</h1>
           <p className="hero-description">{data.restaurant.description}</p>
         </div>
+
         <img src={data.restaurant.picture} alt="photo d'un brunch" />
       </div>
       <main>
@@ -80,15 +87,31 @@ function App() {
 
                     <div className="meals-container">
                       {/* Je parcours le tableau meals contenu dans la clef meals de mon objet représentant une categorie */}
-                      {elemCategory.meals.map((elemMeal) => {
+                      {elemCategory.meals.map((elemMeal, num) => {
 
                         // J'affiche un composant Meal pour chaque objet dans le tableau meals (chaque objet représentant un plat)
                         // Je donne en props cet objet à mon composant
 
                         return (
                           // <Meal meal={elemMeal} key={elemMeal.id} onClick={handleAdd} />;
-                          <article id="encadreMeal" onClick={handleAdd}>
-                            {/* className={panier && "addMealinPanier"}  */}
+                          <article id="encadreMeal" onClick=
+                            {() => {
+                              console.log("clic:", "-", elemMeal.title, "-", elemMeal.price);
+
+                              const copy = [...panier];
+                              //const id = new Date().getTime();
+                              copy.push({
+                                id: elemMeal.id,
+                                nom: elemMeal.title,
+                                prix: elemMeal.price,
+                                quantite: 1,
+                              });
+                              setPanier(copy);
+
+                            }}
+
+                          >
+
                             <div>
                               <p className="meal-title">{elemMeal.title}</p>
                               <p className="meal-description">{elemMeal.description}</p>
@@ -107,24 +130,82 @@ function App() {
 
 
                 </>)
-              } else {
+              } else {// eslint-disable-next-line
                 {/*  si categorie est vide return null */ }
+
                 return null;
               }
             })}
 
           </section>
 
-          <section className="right-part"> "PANIER (*＾▽＾)"／
-            {counters.map((itemCounter, index) => {
-              return (
-                //  <CounterPanier key={index} counter={counter} counters={counters} setCounters={setCounters} index={index} />
-                <span>{itemCounter}</span>
+          <section className="right-part" >
+            <button className="validPanier"> VALIDER MON PANIER</button>
 
-              )
-            })}
+            {panier.length < 1 ? (
+              <p>PANIER VIDE (*＾▽＾)"／ </p>
+            ) : (<>
+              {panier.map((itemPanier) => {
+                return (<>
+                  {itemPanier.quantite < 1 ? (
+                    <p>Panier vide</p>
+                  ) : (<>
 
-          </section>
+                    <div key={itemPanier.id} className="itemPanier">
+                      <div className="lineItem">
+                        <button onClick={() => {
+                          console.log("quantité : ", itemPanier.quantite);
+                          const copy = [...counters];
+                          itemPanier.quantite++;
+                          itemPanier.prix = itemPanier.prix * 2
+                          setCounters(copy);
+                        }
+                        }>+</button>
+
+                        <span id="counters">
+                          {itemPanier.quantite}</span>
+
+
+                        <button
+                          onClick={() => {
+                            if (itemPanier.quantite > 1) {
+                              console.log("quantité : ", itemPanier.quantite);
+                              const copy = [...counters];
+                              itemPanier.quantite--;
+                              itemPanier.prix = itemPanier.prix / 2
+                              setCounters(copy);
+                            } else if (itemPanier.quantite < 1) {
+                              itemPanier.quantite = 0;
+
+                            }
+                          }}
+                        >-</button>
+
+                        <div> {itemPanier.nom} </div>
+                        <div className="prix"> {itemPanier.prix}</div>
+                      </div>
+
+                    </div>
+
+
+
+                  </>)}
+
+                </>)
+
+              })}
+
+              <div className="sousTotal">
+                <p className="prix">Sous-total : </p>
+                <p className="prix">Frais de livraison : </p>
+              </div>
+              <div className="total">
+                <p className="prix">Total </p>
+              </div>
+
+
+            </>)
+            }     </section>
         </div>
       </main>
       <footer>
@@ -133,7 +214,7 @@ function App() {
           Le Reacteur by Audrey
         </a>
       </footer>
-    </div>
+    </div >
   </>);
 }
 
