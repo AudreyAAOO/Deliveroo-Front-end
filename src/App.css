@@ -1,16 +1,126 @@
+.App {
+	/*background-color: aqua;*/
+	margin: 0 auto;
+}
+
 header {
 	height: 100px;
 	border-bottom: 1px solid rgb(154, 154, 154);
 }
 
-.containerMap {
-	border: 1px solid blue;
-	background-color: antiquewhite;
+img {
+	height: 50px;
+	width: 50px;
 }
 
-.containerMeal > h3,
-.containerMeal > p {
-	border: 1px solid rgb(0, 0, 0);
+h1 {
+	font-size: 30px;
+	margin-bottom: 30px;
+}
+
+h2 {
+	font-size: 25px;
+	margin-bottom: 20px;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1200px;
+	/*background-color: red;*/
+}
+
+.hero-container {
+	padding: 30px 0;
+	display: flex;
+}
+
+.hero-description {
+	font-size: 20px;
+	color: grey;
+}
+
+.hero-container img {
+	width: 350px;
+	height: 200px;
+	border-radius: 5px;
+}
+
+main {
+	background-color: lightgrey;
+}
+
+.main-part {
+	display: flex;
+}
+
+.left-part {
+	/* background-color: red; */
+	width: 70%;
+}
+
+.right-part {
+	/* background-color: green; */
+	width: 30%;
+}
+
+.category-container {
+	/* background-color: blue; */
+	margin: 30px 0;
+}
+
+.meals-container {
+	display: flex;
+	flex-wrap: wrap;
+	/* column-gap: 10%; */
+	justify-content: space-between;
+}
+
+article {
+	height: 160px;
+	/* width: 380px; */
+	width: 45%;
 	background-color: white;
-	width: 100%;
+	padding: 15px;
+	display: flex;
+	justify-content: space-between;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+article img {
+	height: 130px;
+	width: 130px;
+	object-fit: cover; /* pour ne pas déformer les images */
+	border-radius: 5px;
+}
+
+.meal-title {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.meal-description {
+	height: 33px;
+	/* background-color: red; */
+	overflow: hidden;
+	/* text-overflow: ellipsis; */
+	margin-bottom: 20px;
+}
+
+.price-popular-container {
+	display: flex;
+}
+
+/* :–☆–:*:–☆–:*:–☆–:*:–☆–:*:–☆–:*:–☆–: */
+/*! -- MEDIA QUERIES --★゜・。。・゜゜・。。・゜☆゜・。。・゜゜・。。・゜★゜・。。・゜゜・。。・゜☆ */
+/* -▼･ェ･▼･ェ･▼･ェ･▼･ェ･▼･ェ･▼･ェ･▼･ェ･▼- */
+
+@media (max-width: 1150px) {
+	
+
+	.container {
+		max-width: 95vw;
+		/*background-color: red;*/
+		margin: 0 auto;
+	}
 }
