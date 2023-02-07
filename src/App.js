@@ -15,7 +15,7 @@ function App() {
   // State qui me sert à savoir si la data a été récupérée
   const [isLoading, setIsLoading] = useState(true);
 
-  // Je déclare la focntion qui fait la requête
+  // Je déclare la fonction qui fait la requête
   const fetchData = async () => {
     try {
       const response = await axios.get("https://site--mydeliveroo--hw4gvwsxlwd5.code.run/"); // http://localhost:3000/ "https://site--mydeliveroo--hw4gvwsxlwd5.code.run/
@@ -36,10 +36,10 @@ function App() {
   }, []);   //!! ne pas oublier [] si on ne veut pas refaire la requête
 
   //! COMPORTEMENTS
-  const handleAdd = () => {
+  const handleAdd = ({elemMeal}) => {
     console.log("clic");
     const copy = [...counters];
-    copy.push("0")
+    copy.push(elemMeal)
     setCounters(copy);
     console.log("copy: ", copy);
     setPanier(!panier);
@@ -51,7 +51,6 @@ function App() {
   return isLoading ? (  // Tant que isLoading vaut true, j'affiche un indicateur de chargement
     <span>En cours de chargement... </span>
   ) : (<>
-
 
     <div className="App">
       <Header />
@@ -73,7 +72,6 @@ function App() {
               //console.log("elemCategory.name: ", elemCategory.name);
               // Si ma catégorie contient des plats, j'affiche un composant Category
               if (elemCategory.meals.length !== 0) {
-
                 return (<>
                   {/* <Category listCategory={elemCategory} key={index} />// Je donne l'objet représentant une categorie en props à mon composant */}
                   <section className="category-container">

@@ -80,6 +80,11 @@ main {
 	background-color: rgb(249, 56, 178);
 }
 
+#encadreMeal {
+	border: 2px solid rgb(255, 0, 0);
+	cursor: pointer;
+}
+
 /**********************/
 
 
@@ -131,10 +136,7 @@ article img {
 	display: flex;
 }
 
-#encadreMeal {
-	border: 2px solid rgb(255, 0, 0);
-	cursor: pointer;
-}
+
 
 /* :–☆–:*:–☆–:*:–☆–:*:–☆–:*:–☆–:*:–☆–: */
 /*! -- MEDIA QUERIES --★゜・。。・゜゜・。。・゜☆゜・。。・゜゜・。。・゜★゜・。。・゜゜・。。・゜☆ */
