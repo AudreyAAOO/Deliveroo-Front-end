@@ -36,7 +36,15 @@ function App() {
   }, []);   //!! ne pas oublier [] si on ne veut pas refaire la requête
 
   //! COMPORTEMENTS
-
+  const handleAdd = () => {
+    console.log("clic");
+    const copy = [...counters];
+    copy.push("0")
+    setCounters(copy);
+    console.log("copy: ", copy);
+    setPanier(!panier);
+    console.log("panier T/F ?", panier);
+  }
 
 
   //! RENDER
@@ -66,7 +74,41 @@ function App() {
               // Si ma catégorie contient des plats, j'affiche un composant Category
               if (elemCategory.meals.length !== 0) {
 
-                return <Category listCategory={elemCategory} key={index} />// Je donne l'objet représentant une categorie en props à mon composant
+                return (<>
+                  {/* <Category listCategory={elemCategory} key={index} />// Je donne l'objet représentant une categorie en props à mon composant */}
+                  <section className="category-container">
+                    {/* J'affiche le titre de ma categorie */}
+                    <h2>{elemCategory.name}</h2>
+
+                    <div className="meals-container">
+                      {/* Je parcours le tableau meals contenu dans la clef meals de mon objet représentant une categorie */}
+                      {elemCategory.meals.map((elemMeal) => {
+
+                        // J'affiche un composant Meal pour chaque objet dans le tableau meals (chaque objet représentant un plat)
+                        // Je donne en props cet objet à mon composant
+
+                        return (
+                          // <Meal meal={elemMeal} key={elemMeal.id} onClick={handleAdd} />;
+                          <article id="encadreMeal" onClick={handleAdd}>
+                            {/* className={panier && "addMealinPanier"}  */}
+                            <div>
+                              <p className="meal-title">{elemMeal.title}</p>
+                              <p className="meal-description">{elemMeal.description}</p>
+                              <div className="price-popular-container">
+                                <p>{elemMeal.price} €</p>
+                                {/* remarquer la clé popular: si elle existe(true) le plat est populaire, l'afficher */}
+                                {elemMeal.popular && <p style={{ color: "orange" }}>Populaire</p>}
+                              </div>
+                            </div>
+                            {elemMeal.picture && <img src={elemMeal.picture} alt="meal" />}
+                          </article>
+                        )
+                      })}
+                    </div>
+                  </section>
+
+
+                </>)
               } else {
                 {/*  si categorie est vide return null */ }
                 return null;
@@ -78,11 +120,12 @@ function App() {
           <section className="right-part"> "PANIER (*＾▽＾)"／
             {counters.map((itemCounter, index) => {
               return (
-        //  <CounterPanier key={index} counter={counter} counters={counters} setCounters={setCounters} index={index} />
-					<span>{itemCounter}</span>
+                //  <CounterPanier key={index} counter={counter} counters={counters} setCounters={setCounters} index={index} />
+                <span>{itemCounter}</span>
 
-         )
+              )
             })}
+
           </section>
         </div>
       </main>
