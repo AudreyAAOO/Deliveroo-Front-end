@@ -57,11 +57,31 @@ main {
 	/* background-color: red; */
 	width: 70%;
 }
+/****** PANIER ***************/
+ .right-part {
+	/* background-color: green;
+	width: 30%; */
+	border: 1px solid blue;
+	border-radius: 10px;
+	width: 325px;
+	height: 400px;
+	margin-top: 20px;
+	background-color: rgb(255, 255, 255);
+} 
 
-.right-part {
-	/* background-color: green; */
-	width: 30%;
+/* .container-panier {
+	border: 1px solid blue;
+	width: 325px;
+	height: 400px;
+	background-color: red;
+} */
+
+.addMealinPanier {
+	background-color: rgb(249, 56, 178);
 }
+
+/**********************/
+
 
 .category-container {
 	/* background-color: blue; */
@@ -111,13 +131,16 @@ article img {
 	display: flex;
 }
 
+#encadreMeal {
+	border: 2px solid rgb(255, 0, 0);
+	cursor: pointer;
+}
+
 /* :–☆–:*:–☆–:*:–☆–:*:–☆–:*:–☆–:*:–☆–: */
 /*! -- MEDIA QUERIES --★゜・。。・゜゜・。。・゜☆゜・。。・゜゜・。。・゜★゜・。。・゜゜・。。・゜☆ */
 /* -▼･ェ･▼･ェ･▼･ェ･▼･ェ･▼･ェ･▼･ェ･▼･ェ･▼- */
 
 @media (max-width: 1150px) {
-	
-
 	.container {
 		max-width: 95vw;
 		/*background-color: red;*/

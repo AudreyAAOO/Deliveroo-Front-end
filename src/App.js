@@ -3,11 +3,15 @@ import "./App.css";
 import axios from "axios";
 import Header from "./Components/Header";
 import Category from "./Components/Category";
+// import CounterPanier from "./Components/CounterPanier";
 
 function App() {
   //! STATE
   // eslint-disable-next-line
   const [data, setData] = useState({});
+  const [counters, setCounters] = useState([0]);
+  const [panier, setPanier] = useState(false);
+
   // State qui me sert à savoir si la data a été récupérée
   const [isLoading, setIsLoading] = useState(true);
 
@@ -67,13 +71,27 @@ function App() {
                 {/*  si categorie est vide return null */ }
                 return null;
               }
-            })};
+            })}
 
           </section>
 
-          <section className="right-part"> "PANIER (*＾▽＾)"／</section>
+          <section className="right-part"> "PANIER (*＾▽＾)"／
+            {counters.map((itemCounter, index) => {
+              return (
+        //  <CounterPanier key={index} counter={counter} counters={counters} setCounters={setCounters} index={index} />
+					<span>{itemCounter}</span>
+
+         )
+            })}
+          </section>
         </div>
       </main>
+      <footer>
+        Made with <a href="https://reactjs.org/">React</a> at{" "}
+        <a href="https://www.lereacteur.io/">
+          Le Reacteur by Audrey
+        </a>
+      </footer>
     </div>
   </>);
 }
