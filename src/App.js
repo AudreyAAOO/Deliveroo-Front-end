@@ -66,7 +66,7 @@ function App() {
           <p className="hero-description">{data.restaurant.description}</p>
         </div>
 
-        <img src={data.restaurant.picture} alt="photo d'un brunch" />
+        <img src={data.restaurant.picture} alt="brunch" />
       </div>
       <main>
         <div className="container main-part">
@@ -176,6 +176,7 @@ function App() {
                               setCounters(copy);
                             } else if (itemPanier.quantite < 1) {
                               itemPanier.quantite = 0;
+                              // essayer avec splice et indexof
 
                             }
                           }}
